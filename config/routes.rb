@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :expense_categories
   resources :expenses
   resources :categories
@@ -7,4 +8,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  root 'categories#index'
+
 end
