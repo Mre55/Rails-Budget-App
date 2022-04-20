@@ -1,43 +1,46 @@
-<nav class="header">
-  <ul class="flex">
+<nav class="text-center text-gray-200 tracking-wider bg-[#3778c2] w-full py-3">
+  <ul class="flex justify-between px-4 items-center">
     <li>
-      <h2 class="heading fw-bold">Categories</h2>
+      <a href="/"><i class="fa fa-arrow-left"></i></a>
     </li>
     <li>
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-outline-success" %>
+      <h2 class="text-3xl font-medium">Categories</h2>
+    </li>
+    <li>
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-outline-success" %>
     </li>
   </ul>
 </nav>
 <%=render 'layouts/errornotice' %>
 <% if @categories.any?%>
   <% @categories.each do |category| %>
-    <div class="p-2 m-3  category-div">
-      <div class="category-info">
-        <p> <%=image_tag "#{category.icon}" ,class:"p-2 m-1 rounded img-thumbnail"%></p>
-        <ul class="p-2 m-1">
+    <div class="p-2 m-3 bg-white flex w-11/12 justify-between">
+      <div class="flex gap-x-12">
+        <p> <%=image_tag "#{category.icon}" ,class:"w-28 rounded img-thumbnail"%></p>
+        <ul class="w-6/12">
           <li>
             <p ><%= link_to category.name, category_path(category), class:"" %></p>
           </li>
           <li>
-            <p class="p-2 m-2"> <%= category.created_at.strftime("%d-%b-%Y")%></p>
+            <p class=""> <%= category.created_at.strftime("%d-%b-%Y")%></p>
           </li>
         </ul>
       </div>
-      <ul class="p-2 m-1">
+      <ul class="mr-4">
         <li>
-          <p class="p-2 m-2 h3"> $<%= category.expenses.sum(:amount)%></p>
+          <p class=""> $<%= category.expenses.sum(:amount)%></p>
         </li>
         <li>
           <%if can? :destroy, category %>
-            <%=button_to "Delete", category_path(category.id), method: :delete, class:"btn btn-primary px-4 m-2"%>
+            <%=button_to "Delete", category_path(category.id), method: :delete, class:"text-center p-2 rounded bg-red-600 text-white hover:bg-green-dark focus:outline-none"%>
           <%end%>
         </li>
       </ul>
     </div>
   <%end%>
 <%else%>
-  <p class="p-2 m-2 h3">There is no Category. You can add Category</p>
+  <p class="text-2xl text-center mt-8">There is no Category. You can add Category</p>
 <%end%>
-<div class=" w-100  py-3 px-3 btnn">
-  <%= link_to "Add Category", new_category_path, class: "btn btn-outline-light  w-75 p-2"%>
+<div class="flex items-center justify-center  inset-x-0 bottom-0 h-20 text-center w-full">
+  <%= link_to "Add Category", new_category_path, class: "mt-20 mb-12 px-24  bg-green-600 text-xl font-light py-3 text-center text-white hover:bg-green-dark focus:outline-none" %>
 </div>

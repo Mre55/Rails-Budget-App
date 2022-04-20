@@ -35,8 +35,8 @@
 </div>
 <% if @category.expenses.any? %>
   <% @category.expenses.order(created_at:'DESC').each do |fd|%>
-    <div class="p-2 m-3 category-div">
-      <div class="category-info">
+    <div class="p-2 m-3 flex flex-row">
+      <div class="flex">
         <p> <%=image_tag @category.icon ,class:"p-1 mx-1 mt-3 rounded img-thumbnail"%></p>
         <ul class="p-2 m-1">
           <li>
