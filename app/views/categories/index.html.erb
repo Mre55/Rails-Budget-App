@@ -7,7 +7,7 @@
       <h2 class="text-3xl font-medium">Categories</h2>
     </li>
     <li>
-      <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-outline-success" %>
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
     </li>
   </ul>
 </nav>
@@ -22,13 +22,13 @@
             <p ><%= link_to category.name, category_path(category), class:"" %></p>
           </li>
           <li>
-            <p class=""> <%= category.created_at.strftime("%d-%b-%Y")%></p>
+            <p> <%= category.created_at.strftime("%d-%b-%Y")%></p>
           </li>
         </ul>
       </div>
-      <ul class="mr-4">
+      <ul class="mr-4 flex flex-col gap-y-4">
         <li>
-          <p class=""> $<%= category.expenses.sum(:amount)%></p>
+          <p> $<%= category.expenses.sum(:amount)%></p>
         </li>
         <li>
           <%if can? :destroy, category %>

@@ -1,59 +1,57 @@
-<nav class="header">
-  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<nav class="text-center text-gray-200 tracking-wider bg-[#3778c2] w-full py-3">
+  <ul class="flex justify-between px-4 items-center">
     <li>
       <a href="/"><i class="fa fa-arrow-left"></i></a>
     </li>
     <li>
-      <h2 class="heading fw-bold">Category Details</h2>
+      <h2 class="text-2xl font-medium">Category Details</h2>
     </li>
     <li>
-      <%= button_to destroy_user_session_path, method: :delete do %>
-        <i class="fa fa-sign-out"></i>
-      <%end%>
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
     </li>
   </ul>
 </nav>
 <%=render 'layouts/errornotice'%>
-<div class="p-2 category-div">
-  <div class="category-info">
+<div class="p-2 m-3 bg-white flex w-11/12 justify-between items-center">
+  <div class="flex gap-x-12">
     <ul class="p-2 m-2">
-      <li> 
-        <p class="border-2 border-red-500" ><%= @category.name%></p>
+      <li class='mt-4'> 
+        <p class='font-semibold text-xl'><%= @category.name  %></p>
       </li>
     </ul>
   </div>
-  <ul class="p-2 m-2">
+  <ul class="mr-4 flex flex-col gap-y-4">
     <li>
-      <p class="p-2 m-2 h3"> $<%= @category.expenses.sum(:amount)%></p>
+      <p class=""> $<%= @category.expenses.sum(:amount)%></p>
     </li>
     <li>
       <%if can? :destroy, @category %>
-        <%=link_to "Delete", category_path(@category.id), method: :delete, class:"btn btn-primary px-4 m-2"%>
+        <%=link_to "Delete", category_path(@category.id), method: :delete, class:"text-center p-2 rounded bg-red-600 text-white hover:bg-green-dark focus:outline-none"%>
       <%end%>
     </li>
   </ul>
 </div>
 <% if @category.expenses.any? %>
   <% @category.expenses.order(created_at:'DESC').each do |fd|%>
-    <div class="p-2 m-3 flex flex-row">
-      <div class="flex">
-        <p> <%=image_tag @category.icon ,class:"p-1 mx-1 mt-3 rounded img-thumbnail"%></p>
-        <ul class="p-2 m-1">
+    <div class="p-2 m-3 bg-white flex w-11/12 justify-between">
+      <div class="flex gap-x-12">
+        <p> <%=image_tag @category.icon ,class:"w-28 rounded img-thumbnail"%></p>
+        <ul class="w-6/12">
           <li>
-            <p class="border-2 border-red-500" ><%= fd.name%></p>
+            <p><%= fd.name%></p>
           </li>
           <li> 
-            <p class="border-2 border-red-500"> <%= fd.created_at.strftime("%d-%b-%Y")%></p>
+            <p> <%= fd.created_at.strftime("%d-%b-%Y")%></p>
           </li>
         </ul>
       </div>
-      <ul class="p-2 m-1">
+      <ul class="mr-4 flex flex-col gap-y-4">
         <li> 
-          <p class="p-2 m-2 h4" >$<%= fd.amount%></p>
+          <p>$<%= fd.amount%></p>
         </li>
         <li>
           <%if can? :destroy, fd%>
-            <%=button_to "Delete", category_expense_path(category_id: @category.id, id: fd.id), method: :delete, class:"btn btn-primary px-4 m-2"%>
+            <%=button_to "Delete", category_expense_path(category_id: @category.id, id: fd.id), method: :delete, class:"text-center p-2 rounded bg-red-600 text-white hover:bg-green-dark focus:outline-none"%>
           <%end%>
         </li>
       </ul>
@@ -63,5 +61,5 @@
   <p class="p-2 m-2 h3" >There are no transactions for this category</p>
 <%end%>
 <div class="w-100 py-3 px-3 btnn">
-  <%= link_to "Add transaction",  new_category_expense_path(@category), class: "border-2 border-rose-500"%>
+  <%= link_to "Add transaction",  new_category_expense_path(@category), class: "mt-20 mb-12 px-24  bg-green-600 text-xl font-light py-3 text-center text-white hover:bg-green-dark focus:outline-none"%>
 </div>
