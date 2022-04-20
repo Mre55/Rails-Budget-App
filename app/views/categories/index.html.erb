@@ -14,7 +14,7 @@
 <%=render 'layouts/errornotice' %>
 <% if @categories.any?%>
   <% @categories.each do |category| %>
-    <div class="p-2 m-3 bg-white flex w-11/12 justify-between">
+    <div class="p-2 mt-12 bg-white flex w-11/12 justify-between">
       <div class="flex gap-x-12">
         <p> <%=image_tag "#{category.icon}" ,class:"w-28 rounded img-thumbnail"%></p>
         <ul class="w-6/12">
