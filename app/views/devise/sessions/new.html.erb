@@ -1,7 +1,7 @@
 <h2 class="flex justify-center text-gray-200 tracking-wider bg-[#3778c2] w-full py-3">LOG IN</h2>
 
 <div class='w-9/12 text-lg'>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, data: {turbo: false}, url: session_path(resource_name)) do |f| %>
     <div class="mt-12 text-[#434b54]">
       <div class="field">
         <%= f.label :email %>
