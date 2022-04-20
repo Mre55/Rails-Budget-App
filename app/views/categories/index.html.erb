@@ -1,14 +1,48 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Categories</h1>
-
-<div id="categories">
+<nav class="header">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li>
+      <a href="/"><i class="fa fa-navicon"></i></a>
+    </li>
+    <li>
+      <h2 class="heading fw-bold">Categories</h2>
+    </li>
+    <li>
+      <%= button_to destroy_user_session_path, method: :delete do %>
+        <i class="fa fa-sign-out"></i>
+      <%end%>
+    </li>
+  </ul>
+</nav>
+<%=render 'layouts/errornotice' %>
+<% if @categories.any?%>
   <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
+    <div class="p-2 m-3  category-div">
+      <div class="category-info">
+        <p> <%=image_tag "#{category.icon}" ,class:"p-2 m-1 rounded img-thumbnail"%></p>
+        <ul class="p-2 m-1">
+          <li>
+            <p ><%= link_to category.name, category_path(category), class:"" %></p>
+          </li>
+          <li>
+            <p class="p-2 m-2"> <%= category.created_at.strftime("%d-%b-%Y")%></p>
+          </li>
+        </ul>
+      </div>
+      <ul class="p-2 m-1">
+        <li>
+          <p class="p-2 m-2 h3"> $<%= category.expenses.sum(:amount)%></p>
+        </li>
+        <li>
+          <%if can? :destroy, category %>
+            <%=button_to "Delete", category_path(category.id), method: :delete, class:"btn btn-primary px-4 m-2"%>
+          <%end%>
+        </li>
+      </ul>
+    </div>
+  <%end%>
+<%else%>
+  <p class="p-2 m-2 h3">There is no Category. You can add Category</p>
+<%end%>
+<div class=" w-100  py-3 px-3 btnn">
+  <%= link_to "Add Category", new_category_path, class: "btn btn-outline-light  w-75 p-2"%>
 </div>
-
-<%= link_to "New category", new_category_path %>
