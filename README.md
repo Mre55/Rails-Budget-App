@@ -5,11 +5,11 @@
 
 ## Live Link
 
-- [Heroku]()
+- [Heroku](https://fast-escarpment-78982.herokuapp.com/)
 
 ## Video
 
-- [Video]()
+- [Video](https://www.loom.com/share/c91e3744977e4cb5be1de4d849e650c4)
 
 ## Built With
 
