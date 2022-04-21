@@ -10,10 +10,12 @@ class Ability
     else
       can :read, :all
       can :destroy, Category do |category|
-        category.user.id == user.id
+        category.author == user
+        # category.author.id == author_id
       end
       can :destroy, Expense do |expense|
-        expense.user.id == user.id
+        expense.author == user
+        # expense.author.id == author_id
       end
     end
     #

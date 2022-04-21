@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
   let(:user) { User.create(name: 'Mihreteab Misganaw', email: 'mre@mail.com', password: 'asdasd') }
-  let(:category) { Category.create(name: 'Shopping', icon: 'https://i.imgur.com/Ar3Lf3Dt.png', user_id: user.id) }
+  let(:category) { Category.create(name: 'Shopping', icon: 'https://i.imgur.com/Ar3Lf3Dt.png', author_id: user.id) }
 
   describe 'Validations' do
     context 'when valid' do
@@ -14,8 +14,8 @@ RSpec.describe Category, type: :model do
       expect(category).to be_valid
     end
 
-    it 'should allow valid user_id' do
-      category.user_id = nil
+    it 'should allow valid author_id' do
+      category.author_id = nil
       expect(category).to_not be_valid
     end
   end

@@ -18,7 +18,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   test 'should create category' do
     assert_difference('Category.count') do
       post categories_url,
-           params: { category: { icon: @category.icon, name: @category.name, user_id: @category.user_id } }
+           params: { category: { icon: @category.icon, name: @category.name, author_id: @category.author_id } }
     end
 
     assert_redirected_to category_url(Category.last)
@@ -36,7 +36,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update category' do
     patch category_url(@category),
-          params: { category: { icon: @category.icon, name: @category.name, user_id: @category.user_id } }
+          params: { category: { icon: @category.icon, name: @category.name, author_id: @category.author_id } }
     assert_redirected_to category_url(@category)
   end
 

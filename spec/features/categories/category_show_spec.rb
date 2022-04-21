@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Category Show', type: :feature do
   before(:each) do
     @user = User.create(name: 'Mre Misg', email: 'mre@example.com', password: 'password')
-    @category = Category.create(name: 'Shopping', icon: 'https://i.imgur.com/Ar3Lf3Dt.png', user_id: @user.id)
+    @category = Category.create(name: 'Shopping', icon: 'https://i.imgur.com/Ar3Lf3Dt.png', author_id: @user.id)
     visit user_session_path
     fill_in 'Email', with: 'mre@example.com'
     fill_in 'Password', with: 'password'
