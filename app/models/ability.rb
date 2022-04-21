@@ -11,11 +11,9 @@ class Ability
       can :read, :all
       can :destroy, Category do |category|
         category.author == user
-        # category.author.id == author_id
       end
       can :destroy, Expense do |expense|
         expense.author == user
-        # expense.author.id == author_id
       end
     end
     #
