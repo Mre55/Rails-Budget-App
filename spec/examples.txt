@@ -1,6 +1,7 @@
 example_id                                  | status | run_time        |
 ------------------------------------------- | ------ | --------------- |
 ./spec/features/category_index_spec.rb[1:1] | passed | 0.06626 seconds |
+./spec/features/category_new_spec.rb[1:1]   | passed | 0.06661 seconds |
 ./spec/features/login_spec.rb[1:1]          | passed | 0.06655 seconds |
 ./spec/features/registration_spec.rb[1:1]   | passed | 0.06357 seconds |
 ./spec/models/category_spec.rb[1:1:1:1]     | passed | 0.27911 seconds |
