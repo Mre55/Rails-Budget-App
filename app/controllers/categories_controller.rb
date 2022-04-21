@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.where(user_id: current_user.id)
+    @categories = Category.where(author_id: current_user.id)
   end
 
   def show

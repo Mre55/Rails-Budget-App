@@ -1,4 +1,4 @@
-ENV['RAILS_ENV'] ||= 'test'
+ENV.fetch('RAILS_ENV', nil)
 require_relative '../config/environment'
 require 'rails/test_help'
 

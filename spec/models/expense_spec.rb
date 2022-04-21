@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
   let(:user) { User.create(name: 'Mihreteab Misganaw', email: 'mre@mail.com', password: 'password') }
-  let(:category) { Category.create(name: 'Shopping', icon: 'https://i.imgur.com/Ar3Lf3Dt.png', user_id: user.id) }
-  let(:expense) { Expense.create(name: 'Suit', amount: 12, user_id: user.id) }
+  let(:category) { Category.create(name: 'Shopping', icon: 'https://i.imgur.com/Ar3Lf3Dt.png', author_id: user.id) }
+  let(:expense) { Expense.create(name: 'Suit', amount: 12, author_id: user.id) }
   let(:expense_category) { ExpenseCategory.create(category_id: category.id, expense_id: expense.id) }
 
   describe 'Validations' do
