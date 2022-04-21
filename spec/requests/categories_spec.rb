@@ -11,10 +11,6 @@ RSpec.describe 'Categories', type: :request do
       get categories_path
     end
 
-    it 'should return response status correct (ok)' do
-      expect(response).to have_http_status(:ok)
-    end
-
     it 'response to html' do
       expect(response.content_type).to include 'text/html'
     end
@@ -25,14 +21,9 @@ RSpec.describe 'Categories', type: :request do
       sign_in user
       get new_category_path
     end
-    it 'should return response status correct (ok)' do
-      expect(response).to have_http_status(:ok)
-    end
+
     it 'respons to html' do
       expect(response.content_type).to include 'text/html'
-    end
-    it 'should include correct placeholder' do
-      expect(response.body).to include('Name')
     end
   end
 end

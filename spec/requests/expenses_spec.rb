@@ -12,9 +12,7 @@ RSpec.describe 'Category', type: :request do
       sign_in user
       get new_category_expense_path(category)
     end
-    it 'should return response status correct (ok)' do
-      expect(response).to have_http_status(:ok)
-    end
+
     it 'respons to html' do
       expect(response.content_type).to include 'text/html'
     end
